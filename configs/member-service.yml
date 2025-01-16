@@ -2,7 +2,7 @@ server:
   port: 3001
 
 spring:
-
+  # 데이터 베이스 설정
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@${db.host}:XE
@@ -19,6 +19,7 @@ spring:
     hibernate:
       ddlAuto: ${ddl.auto}
 
+# 로거 설정
 logging:
   level:
     org.hibernate.type: trace
@@ -39,3 +40,21 @@ springdoc:
     doc-expansion: none
   paths-to-match:
     - /**
+
+# cors 설정
+cors:
+  allowed: https://pintech.koreait.xyz,http://localhost:3000
+
+# 프론트 앤드 도메인
+front:
+  domain: https://pintech.koreait.xyz,http://localhost:3000
+
+#유레카 설정
+eureka:
+  instance:
+    hostname: ${hostname}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${eureka.server}/eureka/
