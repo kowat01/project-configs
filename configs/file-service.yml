@@ -1,16 +1,7 @@
 server:
-  port: 3000
-  servlet:
-    session:
-      cookie.name: bfb4c74f0
+  port: 3002
 
 spring:
-  # 레디스 설정
-  data:
-    redis:
-      host: ${redis.host}
-      port: ${redis.port}
-
   # 데이터 베이스 설정
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
@@ -27,11 +18,6 @@ spring:
         use_sql_comments: true
     hibernate:
       ddlAuto: ${ddl.auto}
-
-  # 타임리프 설정
-  thymeleaf:
-    cache: false
-    prefix: file:src/main/resources/templates/
 
   # 파일 업로드 용량 설정
   servlet:
@@ -65,7 +51,11 @@ springdoc:
     disable-swagger-default-url: true
     doc-expansion: none
   paths-to-match:
-    - /api/**
+    - /**
+
+# cors 설정
+cors:
+  allowed: https://pintech.koreait.xyz,http://localhost:3000
 
 # 유레카 설정
 eureka:
